@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const authRouter = require('./Routes/authRouter');
+const postRouter = require('./Routes/postRouter');
 
 // Body-parser
 app.use(express.json());
@@ -21,6 +22,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/auth', authRouter);
+app.use('/api/post', postRouter);
 
 // Server Connection
 const port = process.env.PORT || 5000;
