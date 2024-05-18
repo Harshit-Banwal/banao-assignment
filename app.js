@@ -3,16 +3,15 @@ const app = express();
 const mongoose = require('mongoose');
 const authRouter = require('./Routes/authRouter');
 const postRouter = require('./Routes/postRouter');
+const dotenv = require('dotenv');
+dotenv.config();
 
 // Body-parser
 app.use(express.json());
 
 // Database Connection
-const mongo_url =
-  'mongodb+srv://harshitbanwal849:jvLNCKw83Xv7cAci@cluster0.nekrntp.mongodb.net/banao-app?retryWrites=true&w=majority';
-
 mongoose
-  .connect(mongo_url)
+  .connect(process.env.MONGODB_URL)
   .then(() => console.log('DB connected'))
   .catch((err) => console.log(err));
 
